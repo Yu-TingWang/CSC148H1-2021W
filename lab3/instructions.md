@@ -24,31 +24,6 @@ David is the winner.
 |3	  |	      |     20|
 |	  |    1  |     21|
 
-Player1 | Player2
-Diane	David	count
-----------------------
-      |       |     0
-----------------------
-2     |       |		2
-----------------------
-	  |  3    |     5
-----------------------
-3     |       |		8
-----------------------
-      |  1	  |     9
-----------------------
-3	  |	      |     12
-----------------------
-      |  3	  |     15
-----------------------
-1  	  |	      |     16
-----------------------
-      |   1	  |     17
-----------------------
-3	  |	      |     20
-----------------------
-	  |    1  |     21
-----------------------
 Download module nim_no_classes.py into your lab3 folder.
 This is a simple version of the number game (named Nim) that you can play by yourself.
 This implementation does not use any classes, and is very limited in its functionality.
