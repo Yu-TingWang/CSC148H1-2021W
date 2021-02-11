@@ -10,7 +10,7 @@ David is the winner.
 
 
 
-| Player1  |      Player2      |  count |
+| Player1: Diane |      Player2:David      |  count |
 |----------|:-------------:|------:|
 |  |   | 0 |
 | 2 |       |   2|
