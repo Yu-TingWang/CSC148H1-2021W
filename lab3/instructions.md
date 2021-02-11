@@ -1,4 +1,4 @@
-##Task 1: Play a game
+<h1>Task 1: Play a game
 In this lab you'll write code to play a simple number game. This game can be played with two or more players.
 When the game starts, there is a count that begins at 0.
 On a player's turn, they add to the count an integer that must be between a set minimum and a set maximum.
@@ -32,7 +32,7 @@ Try to play the game yourself, or with a partner. Use the goal 21, minimum move 
 
 Does a good strategy emerge?
 (Even if it doesn't, move on after a few minutes when you understand the game. We'll come back to strategies later!)
-##Task 2: Become familiar with class
+<h1>Task 2: Become familiar with class
 
 Download module lab3.py into your lab3 folder.
 
@@ -67,7 +67,7 @@ move
 
 
 
-##Task 3: Become familiar with function main
+<h1>Task 3: Become familiar with function main
 Now look at function main and answer these questions:
 
 1. Where is a NumberGame constructed?
@@ -77,7 +77,7 @@ Now look at function main and answer these questions:
  
 3. List all the places in this function where a Player is stored, an instance attribute of Player is accessed or set,
  or a method is called on a Player.
-##Task 4: Plan a Player class and 3 subclasses
+<h1>Task 4: Plan a Player class and 3 subclasses
 Since you have found all the places where a Player is used, you know the attributes and methods it must provide
 as its public interface. You could complete the program by writing a single class Player with methods that provide these.
 But we're going to have three different kinds of player. They will have some things in common,
@@ -97,7 +97,7 @@ Rather than make three unrelated classes, we are going to define a parent class 
    Don't worry about attribute names or types yet, just describe the information in plain English.
    Decide which pieces of information belong in which class and add them to the appropriate spot in your diagram.
 
-##Task 5: Write class Player
+<h1>Task 5: Write class Player
 Now write the abstract class Player. You will probably be able to implement some methods completely.
 Other methods you won't be able to complete at all-- they are abstract. In those methods, the body should simply say
     raise NotImplementedError
@@ -105,7 +105,7 @@ Be sure to include a complete class docstring. (You can look at class NumberGame
 Your docstring should warn that the Player class is abstract and should not be instantiated.
 You do not need to include doctest examples.
 
-##Task 6: Implement class RandomPlayer
+<h1>Task 6: Implement class RandomPlayer
 Now that we have a Player class, we need one or more child classes that can complete its unimplemented method(s).
 
 Implement class RandomPlayer as a subclass of Player (review how to do this if you aren't sure).
@@ -114,7 +114,7 @@ Any Player methods that were not implemented must be overridden here in class Ra
 We have imported module random for you. You will find the function random.randint handy--
 if you aren't sure how to use it, import it in the Python console and call help on it to learn more!
 
-##Task 7: Make the whole thing run
+<h1>Task 7: Make the whole thing run
 Even though you only have one kind of player, you can still make the program run.
 Fill in the missing part in make_player to so that it creates a RandomPlayer.
 (Later, we'll let the user choose from among the three types of player.)
@@ -125,7 +125,7 @@ There will likely be small glitches to fix, but they will be things like forgett
 and shouldn't be hard to fix.
 Read the error messages carefully-- they include very precise information about what's wrong.
 
-##Task 8: Add class UserPlayer
+<h1>Task 8: Add class UserPlayer
 Now implement UserPlayer. If you have time, ensure that the user's moves are legal. But if you are running out of time,
 don't bother with that. It's not important to the learning goals for this lab.
 
