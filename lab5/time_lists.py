@@ -15,7 +15,7 @@ from lab5.augment_linked_list import LinkedList as betterList
 from typing import List, Callable
 
 SIZES = [1000, 2000, 4000, 8000, 16000]
-#SIZES = [1,2,3,4,5]# The list sizes to try.
+min_SIZES = [1,2,3,4,5]# The list sizes to try.
 NUM_TRIALS = 20                        # The number of trials to run.
 
 
@@ -99,23 +99,29 @@ import matplotlib
 def plot_time()->None:
     import matplotlib.pyplot as plt
     lst_times = time_len(list) # var1
-    linkedlist_times = time_len(LinkedList)
-    betterList_times = time_len(betterList)
+    linkedlist_times = time_len(LinkedList) # var2
+    betterList_times = time_len(betterList) # var3
 
+
+    # ro: make each data of lst_plt as red circle
+    # SIZES : draw a red dot in x-axis at each point in SIZES
     lst_plt, = plt.plot(SIZES,lst_times,'ro')
+    # label red circle as 'len(lst)'
     lst_plt.set_label('len(lst)')
 
+    # bo : set a blue circle
     lnk_plt, = plt.plot(SIZES, linkedlist_times, 'bo')
     lnk_plt.set_label('len(linkedlist)')
 
+    # kx : set as black cross
     betterlst_plt, = plt.plot(SIZES,betterList_times,'kx')
     betterlst_plt.set_label("len(betterlist)")
 
     plt.legend()
     plt.xlabel("List Size")
     plt.ylabel('time')
-    plt.show()
 
+    plt.show()
 if __name__ == '__main__':
     print("Running len(lst) experiments...")
     time_len(list)
