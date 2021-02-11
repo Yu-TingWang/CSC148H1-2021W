@@ -34,7 +34,7 @@ MANIFEST
 *.spec
 
 
-.idea/
+.idea/*
 .DS_Store
 
 # personalized
