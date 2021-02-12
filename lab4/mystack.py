@@ -113,7 +113,17 @@ def remove_big(s: Stack) -> None:
     >>> s.is_empty()
     True
     """
-    pass
+    reverse = Stack()
+    while not s.is_empty():
+        val = s.pop()
+        # if val is greater than 5, then no need to push it to reverse
+        if val <= 5:
+            reverse.push(val)
+    # now all items in reverse must be smaller or equal to 5
+    # so we push items in reverse back to s
+    while not reverse.is_empty():
+        s.push(reverse.pop())
+
 
 
 # TODO: implement this function!
@@ -138,7 +148,25 @@ def double_stack(s: Stack) -> Stack:
     >>> sorted(new_items)
     [1, 1, 29, 29]
     """
-    pass
+    reverse = Stack()
+    # push everything from s
+    while not s.is_empty():
+        val = s.pop()
+        reverse.push(val)
+    # since stored is in reverse order of s,
+    # we need to push everything to another stack to maintain the same order with s
+    result = Stack()
+    while not reverse.is_empty():
+        val = reverse.pop()
+        # push val back to s
+        s.push(val)
+        # push val twice to result
+        result.push(val)
+        result.push(val)
+    return result
+
+
+
 
 
 if __name__ == '__main__':
