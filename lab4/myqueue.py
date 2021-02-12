@@ -23,9 +23,10 @@ class Queue:
     Stores data in a first-in, first-out order. When removing an item from the
     queue, the most recently-added item is the one that is removed.
     """
+    _q: List
     def __init__(self) -> None:
         """Initialize a new empty queue."""
-        pass
+        self._q = []
 
     def is_empty(self) -> bool:
         """Return whether this queue contains no items.
@@ -37,12 +38,12 @@ class Queue:
         >>> q.is_empty()
         False
         """
-        pass
+        return self._q == []
 
     def enqueue(self, item: Any) -> None:
         """Add <item> to the back of this queue.
         """
-        pass
+        self._q.append(item)
 
     def dequeue(self) -> Optional[Any]:
         """Remove and return the item at the front of this queue.
@@ -56,7 +57,10 @@ class Queue:
         >>> q.dequeue()
         'hello'
         """
-        pass
+        if self.is_empty():
+            return None
+        else:
+            return self._q.pop(0)
 
 
 def product(integer_queue: Queue) -> int:
@@ -75,8 +79,13 @@ def product(integer_queue: Queue) -> int:
     >>> q.is_empty()
     True
     """
-    pass
-
+    # if empty queue, then there's no product
+    if integer_queue.is_empty():
+        return 0
+    result = 1
+    while not integer_queue.is_empty():
+        result *= integer_queue.dequeue()
+    return result
 
 def product_star(integer_queue: Queue) -> int:
     """Return the product of integers in the queue.
@@ -93,8 +102,20 @@ def product_star(integer_queue: Queue) -> int:
     >>> prime_line.is_empty()
     False
     """
-    pass
-
+    # if empty queue, then there's no product
+    if integer_queue.is_empty():
+        return 0
+    result = 1
+    reverse = Queue()
+    while not integer_queue.is_empty():
+        val = integer_queue.dequeue()
+        # enqueue val to reverse
+        reverse.enqueue(val)
+        result *= val
+    # dequeue every value in reverse back to integer_queue
+    while not reverse.is_empty():
+        integer_queue.enqueue(reverse.dequeue())
+    return result
 
 if __name__ == '__main__':
     import doctest

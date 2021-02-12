@@ -153,7 +153,7 @@ def double_stack(s: Stack) -> Stack:
     while not s.is_empty():
         val = s.pop()
         reverse.push(val)
-    # since stored is in reverse order of s,
+    # since reverse is in reverse order of s,
     # we need to push everything to another stack to maintain the same order with s
     result = Stack()
     while not reverse.is_empty():
