@@ -60,7 +60,7 @@ Union -> King ->  Queen
 3. Complete the code in time_lists.py to measure how running time for your __len__ method changes 
     as the size of the linked list grows. Is it as you predicted?
 
-4. The if __name__ == '__main__' block runs the experiment on both a LinkedList and a list: 
+4. The ``if __name__ == '__main__'`` block runs the experiment on both a LinkedList and a list: 
     What do you notice about the behaviour of calling len on a built-in list?
     
 <h1>Task 3: Augmenting our linked list implementation</h1>
