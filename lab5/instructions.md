@@ -20,8 +20,8 @@ This is because they use a more powerful initializer than the one we've started 
 Your final task in this section is to implement a new initializer with the following interface:
 
 def __init__(self, items: list) -> None:
+
     """
-    
     Initialize a new linked list containing the given items.
 
     The first node in the linked list contains the first item
@@ -38,11 +38,11 @@ Spend time drawing some pictures before writing any code!
 
 Take subway for example
 
-list: Given the subway line, you can go to whichever station you like
+list: Given the subway line, you can go to whichever station you like.  
 [Union,King,Queen]
 
-linkedlist: When given the subway line, you only have the start station( head node),
-in order to get to Queen Station, you have to traverse from Union to King, King to Queen, you can't jump from Union to Queen directly.
+linkedlist: When given the subway line, you only have the start station( head node),  
+in order to get to Queen Station, you have to traverse from Union to King, King to Queen, you can't jump from Union to Queen directly.  
 | Union|King|  Queen |
 
 <h1>Task 2: Timing __len__ for linked lists vs. array-based lists</h1>
