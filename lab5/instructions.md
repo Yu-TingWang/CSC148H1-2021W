@@ -39,10 +39,10 @@ Spend time drawing some pictures before writing any code!
 
 <h2>Take subway for example</h2>
 
-- <h3>list</h3>: Given the subway line, you can go to whichever station you like.  
+- <h3>list:</h3> Given the subway line, you can go to whichever station you like.  
 [Union,King,Queen]
 
-- <h3>linkedlist</h3>: When given the subway line, you only have the start station( head node),  
+- <h3>linkedlist:</h3> When given the subway line, you only have the start station( head node),  
 in order to get to Queen Station, you have to traverse from Union to King, King to Queen, you can't jump from Union to Queen directly.  
 Union -> King ->  Queen
 
