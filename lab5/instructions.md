@@ -2,11 +2,11 @@ Lab 5: Linked Lists
 Learning outcomes
 By the end of this lab, you will be able to:
 
-Implement linked list methods using iteration.
-Run timing experiments to compare multiple implementations of an interface.
-Augment the implementation of a class by adding new private attributes
+- Implement linked list methods using iteration.
+- Run timing experiments to compare multiple implementations of an interface.
+- Augment the implementation of a class by adding new private attributes
 
-##Task 1: Practice with linked lists
+<h1>Task 1: Practice with linked lists</h1>
 1. In the starter code, find and read the docstring of the method __len__, and then implement it.
 
 You already implemented this method in this week's prep, but it's good practice to implement it again. 
@@ -18,13 +18,16 @@ You already implemented this method in this week's prep, but it's good practice 
 This is because they use a more powerful initializer than the one we've started with.
 
 Your final task in this section is to implement a new initializer with the following interface:
-
+```
 def __init__(self, items: list) -> None:
-    """Initialize a new linked list containing the given items.
+
+    """
+    Initialize a new linked list containing the given items.
 
     The first node in the linked list contains the first item
     in <items>.
     """
+```
 The lecture notes suggest one way to do this using append; 
 however, here we want you to try doing this without using append (or any other helper method).
 
@@ -34,16 +37,16 @@ There are many different ways you could implement this method, but the key idea 
 Spend time drawing some pictures before writing any code!
 
 
-Take subway for example
+<h2>Take subway for example</h2>
 
-list: Given the subway line, you can go to whichever station you like
+- <h3>list:</h3> Given the subway line, you can go to whichever station you like.  
 [Union,King,Queen]
 
-linkedlist: When given the subway line, you only have the start station( head node),
-in order to get to Queen Station, you have to traverse from Union to King, King to Queen, you can't jump from Union to Queen directly.
-| Union|King|  Queen |
+- <h3>linkedlist:</h3> When given the subway line, you only have the start station( head node),  
+in order to get to Queen Station, you have to traverse from Union to King, King to Queen, you can't jump from Union to Queen directly.  
+Union -> King ->  Queen
 
-##Task 2: Timing __len__ for linked lists vs. array-based lists
+<h1>Task 2: Timing __len__ for linked lists vs. array-based lists</h1>
 1. Most methods take longer to run on large inputs than on small inputs, although this is not always the case. 
   Look at your code for your linked list method __len__. 
   Do you expect it to take longer to run on a larger linked list than on a smaller one?
@@ -60,7 +63,7 @@ in order to get to Queen Station, you have to traverse from Union to King, King 
 4. The if __name__ == '__main__' block runs the experiment on both a LinkedList and a list: 
     What do you notice about the behaviour of calling len on a built-in list?
     
-##Task 3: Augmenting our linked list implementation
+<h1>Task 3: Augmenting our linked list implementation</h1>
 It makes sense that our implementation of LinkedList.__len__ is so slow; 
 but how is the built-in list.__len__ so much faster? 
 It turns out that built-in Python lists use an additional attribute to store their length,
