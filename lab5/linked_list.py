@@ -242,6 +242,13 @@ class LinkedList:
             index += 1
         raise ValueError
 
+    '''
+    there are two ways of implementing __setitem__
+    Let's call the node at index N
+    1. get N, and change the value of N.item
+    2. get N and the previous and next node of N, create a new node with value `item`, and replace N with this new node.
+    '''
+
     def __setitem__(self, index: int, item: Any) -> None:
         """Store item at position <index> in this list.
 
@@ -257,12 +264,34 @@ class LinkedList:
         # TODO: implement this method
         if index >= len(self):
             raise IndexError
-        # get the node at index
-        curr = self._first
-        for i in range(index):
-            curr = curr.next
-        # reassign item to curr
-        curr.item = item
+        '''This is method 1'''
+        def method1():
+            # get the node at index
+            curr = self._first
+            for i in range(index):
+                curr = curr.next
+            # reassign item to curr
+            curr.item = item
+
+        '''This is method 2'''
+        def method2():
+            # create a new node with item
+            new_node = _Node(item)
+            prev = None
+            curr = self._first
+            for i in range(index):
+                prev = curr
+                curr = curr.next
+            # if prev is None, then the loop is never entered, which means index ==0
+            if prev == None:
+                new_node.next = curr.next
+                self._first = new_node
+            else:
+                # cut the connection between prev and curr
+                prev.next = new_node
+                # cut the connection between curr and nextnode
+                new_node.next = curr.next
+
 
 
 if __name__ == '__main__':
