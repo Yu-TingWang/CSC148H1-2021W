@@ -18,7 +18,7 @@ You already implemented this method in this week's prep, but it's good practice 
 This is because they use a more powerful initializer than the one we've started with.
 
 Your final task in this section is to implement a new initializer with the following interface:
-
+```
 def __init__(self, items: list) -> None:
 
     """
@@ -27,6 +27,7 @@ def __init__(self, items: list) -> None:
     The first node in the linked list contains the first item
     in <items>.
     """
+```
 The lecture notes suggest one way to do this using append; 
 however, here we want you to try doing this without using append (or any other helper method).
 
@@ -36,14 +37,14 @@ There are many different ways you could implement this method, but the key idea 
 Spend time drawing some pictures before writing any code!
 
 
-Take subway for example
+<h3>Take subway for example<h3/>
 
-list: Given the subway line, you can go to whichever station you like.  
+- list: Given the subway line, you can go to whichever station you like.  
 [Union,King,Queen]
 
-linkedlist: When given the subway line, you only have the start station( head node),  
+- linkedlist: When given the subway line, you only have the start station( head node),  
 in order to get to Queen Station, you have to traverse from Union to King, King to Queen, you can't jump from Union to Queen directly.  
-| Union|King|  Queen |
+Union -> King ->  Queen
 
 <h1>Task 2: Timing __len__ for linked lists vs. array-based lists</h1>
 1. Most methods take longer to run on large inputs than on small inputs, although this is not always the case. 
