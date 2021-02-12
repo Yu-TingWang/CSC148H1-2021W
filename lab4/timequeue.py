@@ -110,7 +110,27 @@ def time_enqueue() -> Tuple[List[float], List[float]]:
     #       but on AddToEndQueue.
     #       (You can just copy the above code and make 2 minor modifications!)
     #       Add the results to endqueue_times instead of startqueue_times
+    for queue_size in QUEUE_SIZES:
+        # 1. Initialize the sample queues
+        queues = _setup_queues(queue_size, NUM_TRIALS, AddToEndQueue) # change StartQueue to EndQueue
 
+        # 2. For each queue created, call the function timeit.
+        #    timeit takes three arguments:
+        #        - a *string* representation of a piece of code to run
+        #        - the number of times to run it (just 1 for us)
+        #        - globals is a technical argument that you DON'T need to
+        #          care about
+        time = 0
+        for queue in queues:
+            time += timeit('queue.enqueue(1)', number=1, globals=locals())
+
+        # 3. Get the average time in microseconds (μs)
+        average_time = time / NUM_TRIALS * 1e6
+
+        # 4. Report the average time taken and add that to our list of
+        #    results.
+        endqueue_times.append(average_time) # change StartQueue to EndQueue
+        print(f'enqueue: Queue size {queue_size:>7}, time: {average_time}')
 
 
     # Do not change the return statement below.
