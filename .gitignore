@@ -129,5 +129,7 @@ dmypy.json
 .pyre/
 
 # personalized
-*solution*/*
-.idea/*
+solution/
+*solution*.py
+.DS_Store
+.idea/
