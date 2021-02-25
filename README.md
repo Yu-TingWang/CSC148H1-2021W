@@ -1,6 +1,5 @@
 # CSC148H1-2021W
 
-This is the repo for CSC148-2021W!<br>
-Feel free to reference lab1-4 codes in this branch, but this is not the official solution.<br>
-Your version doesn't have to be identical with mine, be creative !<br>
-From lab5, this branch will only provide the starter code, please refer to the branch of your tutorial for the work we done in lab :)
+This is the repo for CSC148-2021W TUT5201 !
+I will push the code that we went through in the lab here, feel free to reference it after the class!
+If you feel that you can improve the code in anyway, just raise a pull request!
