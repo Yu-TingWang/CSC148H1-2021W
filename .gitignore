@@ -130,5 +130,5 @@ dmypy.json
 
 # personalized
 solution/
-*solution*/*
+*solution*.py
 */.DS_Store
