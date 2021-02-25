@@ -43,8 +43,13 @@ class RecursiveList:
             self._first = None
             self._rest = None
         else:
-            self._first = items[0]
-            self._rest = RecursiveList(items[1:])
+            # in the case that items has a value None, RecursiveList([None,1, 2, 3])
+            # you can check if itmes[0] is a valid value, if not that skip over this one
+            if items[0] == None:
+                self._first = RecursiveList(items[1:])
+            else:
+                self._first = items[0]
+                self._rest = RecursiveList(items[1:])
 
     def is_empty(self) -> bool:
         """Return whether this list is empty.
@@ -82,7 +87,12 @@ class RecursiveList:
         >>> len(lst)
         3
         """
-        pass
+        if self.is_empty():
+            return 0
+        else:
+            return 1 + self._rest.__len__()
+            # return 1 + len(self._rest)
+
 
     def __contains__(self, item: Any) -> bool:
         """Return whether <item> is in this list.

@@ -70,6 +70,74 @@ def f(obj: Union[int, List]) -> ...:
 
 3. Write down a concrete example with a somewhat complex argument, and then write down the relevant recursive calls and what they should return.
 
+greater_than_all(obj:[1, 2, [1, 2], 4], 10)
+obj:[1, 2, [1, 2], 4]
+ - sublist = 1
+    - greater_than_all(1,10) = True
+ - sublist = 2
+    - greater_than_all(2,10) = True
+ - sublist = [1,2]
+    - greater_than_all([1,2],10)
+        - sublist = 1
+            - greater_than_all(1,10) = True
+        - sublist = 2
+            - greater_than_all(2,10) = True
+ - sublist = 4
+    - greater_than_all(4,10) = True
+
+- Return True
+    
+greater_than_all(obj:[1, 2, [11, 2], 4], 10)
+obj:[1, 2, [11, 2], 4]
+ - sublist = 1
+    - greater_than_all(1,10) = True
+ - sublist = 2
+    - greater_than_all(2,10) = True
+ - sublist = [11,2]
+    - sublist = 11
+        - greater_than_all(11,10) = False
+
+
+return False
+
+---------------------- from line 51
+add_n(obj:[1, 2, [1, 2], 4], 10)
+- obj:[1, 2, [1, 2], 4]
+    - i = 0
+        - obj[0] = 1
+            - obj[0] = add_n(1,10) = 11
+-> obj:[11, 2, [1, 2], 4]
+    - i = 1
+        - obj[1] = 2
+            - obj[1] = add_n(2,10) = 12
+-> obj:[11, 12, [1, 2], 4]
+    - i = 2
+        - obj[2] = [1,2]
+            - obj[2] = add_n([1,2],10)
+                - obj' = [1,2]
+                    - i' = 0
+                        - obj'[0] = 1
+                        - obj'[0] = add_n(1,10) = 11
+                -> obj' = [11,2]
+                    - i' = 1
+                        - obj'[1] = 2
+                        - obj'[1] = add_n(2,10) = 12
+                -> obj' = [11,12]
+            - obj[2] = [11,12]       
+-> obj:[11, 12, [11, 12], 4]             
+    - i = 3
+        - obj[3] = 4
+            - obj[3] = add_n(4,10) =14
+->- obj:[11, 12, [11, 12], 14]
+
+
+
+
+
+
+
+
+
 4. Think about how to combine the recursive calls to compute the correct output.
 
 
@@ -100,6 +168,30 @@ When you are ready, follow these steps to learn and work with this new recursive
 2. Make your own diagram showing what an empty recursive list looks like in this implementation.
 3. Read the docstring and code for the ```__init__```, ```is_empty```, and ```__str__``` methods and understand how each of these three methods works on these instances.
 4. Read the docstring for ```__len__ ```and implement the method.
+
+lst = RecursiveList([1, 2, 3])
+    - self.is_empty() = False
+    - 1+ len(self._rest)
+    - 1+ len(RecursiveList([2,3])) 
+        - self = RecursiveList([2,3])
+        - self.is_empty()=False
+        - 1 + len(self._rest)
+        - 1 + len(RecursiveList([3]))
+            - self = RecursiveList([3])
+            - self.is_emptu() = False
+            - 1 + len(self._rest)
+            - 1 + len(RecursiveList([]))
+                - self = RecursiveList([])
+                - self.is_empty() = True
+            -> 1 + len(RecursiveList([])) = 1 + 0  ... line 183
+        -> 1 + len(RecursiveList([3])) = 1 + 1 = 2 ... line 179
+    -> 1+ len(RecursiveList([2,3]))  = 1 + 2 = 3 ... line 175   
+
+
+
+
+
+
 Your implementation should handle the base case, where the list is empty, and the recursive case, where the list definitely has one item, and possibly more items.
 Remember that even if a ```RecursiveList``` has just one item, its ```_rest``` attribute still refers to a ```RecursiveList``` object!
 5. Read the docstring and implementation for ```__contains__```.
