@@ -9,22 +9,29 @@ By the end of this lab, you will be able to:
 Recall from lecture and the prep exercise that recursion consists of 2 main cases:
 
 1. A base case: where no recursive calls are needed
-2. A general case: where you combine recursive calls to return the desired result.
+2. A general case: where you combine recursive calls to 
+return the desired result.
 
 As you work on recursive functions, keep these cases in mind.
 
-Before starting the lab, consider this example: suppose we want to write a function that takes a nested list and returns the total number of lists in it (i.e. the number of [...]s we see).
+Before starting the lab, consider this example:
+suppose we want to write a function that takes a nested list 
+and returns the total number of lists in it 
+(i.e. the number of [...]s we see).
 
 ```
 def count_lists(obj: Union[int, List]) -> int:
-    """Return the number of lists in obj. If obj is an int, return 0.
+    """Return the number of lists in obj. 
+    If obj is an int, return 0.
     >>> count_lists(1)
     0
     >>> count_lists([1, [2, 3], [[4]]])
     4
     """
 ```
-To write the body of this function: start by identifying the base case. What's the simplest case that wouldn't require any recursive calls?
+To write the body of this function: start by identifying 
+the base case. What's the simplest case 
+that wouldn't require any recursive calls?
 
 This would be the case of obj being an int: there's nothing to recurse on, after all. The docstring itself tells us what to do in this case: return 0.
 
@@ -70,8 +77,74 @@ def f(obj: Union[int, List]) -> ...:
 
 3. Write down a concrete example with a somewhat complex argument, and then write down the relevant recursive calls and what they should return.
 
+
+
+
+
+
 4. Think about how to combine the recursive calls to compute the correct output.
 
+greater_than_all([1, 2, [1, 2],[],11 ,4], 10)
+obj=[1, 2, [1, 2],[],11, 4]
+    - sublist = 1
+        - greater_than_all(sublist,n) = greater_than_all(1,10) = True
+    - sublist = 2
+        - greater_than_all(sublist,n) = greater_than_all(2,10) = True
+    - sublist = [1, 2]
+        - greater_than_all(sublist,n) = greater_than_all([1,2],10)
+            - obj' = [1,2]
+                - sublist' = 1
+                    - greater_than_all(sublist,n) = greater_than_all(1,10) = True
+                - sublist' = 2
+                    - greater_than_all(sublist,n) = greater_than_all(2,10) = True
+        -> greater_than_all([1,2],10) = True (hit by line 35)
+    - sublist = []
+        - greater_than_all(sublist,n) = greater_than_all([],10)
+            - obj' = [], hit line 35, return True
+        -> greater_than_all([],10) = True
+    - sublist = 11
+        - greater_than_all(sublist,n) = greater_than_all(11,10) = False
+    - Return False
+
+
+add_n([1, 2, [1, 2], 4], 10)
+obj = [1, 2, [1, 2], 4]
+    - result = []
+    - sublist = 1
+        - result.append(add_n(1,10))
+            - add_n(1,10) = 11
+        - result.append(11)
+    -> result = [11]
+    - sublist = 2
+        - result.append(add_n(2,10))
+            - add_n(2,10) = 12
+        - result.append(12)
+    -> result = [11,12]
+    - sublist = [1,2]
+        - result.append(add_n([1,2],10))
+            - add_n([1,2],10)
+                - obj' = [1,2]
+                    - result' = []
+                    - sublist' = 1
+                        - result'.append(add_n(1,10))
+                            - add_n(1,10) = 11
+                        - result'.append(11)
+                    -> result' = [11]
+                    - sublist' = 2
+                        - result'.append(add_n(2,10))
+                            - add_n(2,10) = 12
+                        - result'.append(12)
+                    -> result' = [11,12]
+            -> add_n([1,2],10) = result' = [11,12]
+        -> result = [11,12,[11,12]]
+    - sublist = 4
+        - result.append(add_n(4,10)) = 14
+        -> result = [11,12,[11,12],14]
+    - result = [11,12,[11,12],14]
+                   
+
+
+         
 
 **Task 2: Recursive implementation of the List ADT**
 

@@ -13,21 +13,26 @@ def greater_than_all(obj: Union[int, List], n: int) -> bool:
     """Return True iff there is no int in <obj> that is larger than or
     equal to <n> (or, equivalently, <n> is greater than all ints in <obj>).
 
+    Return False if there exists at least one int in <obj> ≥ n
+
     >>> greater_than_all(10, 3)
     False
     >>> greater_than_all([1, 2, [1, 2], 4], 10)
     True
+    >>> greater_than_all([11, 2, [1, 2], 4], 10)
+    False
     >>> greater_than_all([], 0)
     True
     """
-    # if isinstance(obj, int):
-    #     ...
-    # else:
-    #     ...
-    #     for sublist in obj:
-    #         ... add_n(sublist) ...
-    #     ...
-    pass
+    if isinstance(obj, int):
+        return obj<n
+    else: # if obj is a list
+
+        for sublist in obj:
+            if not greater_than_all(sublist,n):
+                return False
+
+        return True
 
 
 def add_n(obj: Union[int, List], n: int) -> Union[int, List]:
@@ -38,14 +43,13 @@ def add_n(obj: Union[int, List], n: int) -> Union[int, List]:
     >>> add_n([1, 2, [1, 2], 4], 10)
     [11, 12, [11, 12], 14]
     """
-    # if isinstance(obj, int):
-    #     ...
-    # else:
-    #     ...
-    #     for sublist in obj:
-    #         ... add_n(sublist) ...
-    #     ...
-    pass
+    if isinstance(obj, int):
+        return obj+n
+    else:
+        result = []
+        for sublist in obj:
+            result.append(add_n(sublist,n))
+        return result
 
 
 def nested_list_equal(obj1: Union[int, List], obj2: Union[int, List]) -> bool:
@@ -65,14 +69,18 @@ def nested_list_equal(obj1: Union[int, List], obj2: Union[int, List]) -> bool:
     # HINT: You'll need to modify the basic pattern to loop over indexes,
     # so that you can iterate through both obj1 and obj2 in parallel.
 
-    # if isinstance(obj, int):
-    #     ...
-    # else:
-    #     ...
-    #     for sublist in obj:
-    #         ... nested_list_equal(sublist) ...
-    #     ...
-    pass
+    # set up base case
+    if isinstance(obj1,int) and isinstance(obj2,int):
+        return obj1 == obj2
+    elif isinstance(obj1,list) and isinstance(obj2,list):
+        if len(obj1) != len(obj2):
+            return False
+        for i in range (len(obj1)):
+            if not nested_list_equal(obj1[i],obj2[i]):
+                return False
+        return True
+    else:
+        return False
 
 
 def duplicate(obj: Union[int, List]) -> Union[int, List]:
@@ -96,15 +104,19 @@ def duplicate(obj: Union[int, List]) -> Union[int, List]:
     # HINT: in the recursive case, you'll need to distinguish between
     # a <sublist> that is an int and a <sublist> that is a list
     # (put an isinstance check inside the loop).
-
-    # if isinstance(obj, int):
-    #     ...
-    # else:
-    #     ...
-    #     for sublist in obj:
-    #         ... duplicate(sublist) ...
-    #     ...
-    pass
+    # set up the base case
+    if isinstance(obj, int):
+        return [obj,obj]
+    else:
+        result = []
+        for sub in obj:
+             ##### review the description for extend v.s. append ####
+            if isinstance(sub, int):
+                result.extend(duplicate(sub))
+            else:
+                result.append(duplicate(sub))
+                # result.extend([duplicate(sub)])
+        return result
 
 
 if __name__ == '__main__':
