@@ -82,7 +82,11 @@ class RecursiveList:
         >>> len(lst)
         3
         """
-        pass
+        if self.is_empty():
+            return 0
+        else:
+            return 1 + len(self._rest)
+
 
     def __contains__(self, item: Any) -> bool:
         """Return whether <item> is in this list.
@@ -116,6 +120,15 @@ class RecursiveList:
         >>> lst.count(3)
         1
         """
+        if self.is_empty():
+            return 0
+        if self._first == item:
+            return 1 + self._rest.count(item)
+        else:
+            return self._rest.count(item)
+
+
+
         pass
 
     def __getitem__(self, index: int) -> Any:
