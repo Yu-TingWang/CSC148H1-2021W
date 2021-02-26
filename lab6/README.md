@@ -195,6 +195,21 @@ lst = RecursiveList([1, 2, 3])
 Your implementation should handle the base case, where the list is empty, and the recursive case, where the list definitely has one item, and possibly more items.
 Remember that even if a ```RecursiveList``` has just one item, its ```_rest``` attribute still refers to a ```RecursiveList``` object!
 5. Read the docstring and implementation for ```__contains__```.
+
+x = RecursiveList([1,2,3])
+y = RecursiveList([None,2,3,4,5])
+
+x._first = 1
+x._rest = RecursiveList([2,3])
+let's call x._rest = w
+w = RecursiveList([2,3])
+w._first = 2
+w._rest = RecursiveList([3])
+let's call w._rest = h
+h = RecursiveList([3])
+h._first = 3
+h._rest = RecursiveList([]) = None
+
 Again, ```__contains__``` has two base cases.
 Then read the docstring for count, which is similar to ```__contains__```, and implement the method.
 6. Read the docstring for ```__getitem__```. ```__getitem__``` should have two base cases:
