@@ -76,16 +76,11 @@ def f(obj: Union[int, List]) -> ...:
 2. Implement the base case(s) directly.
 
 3. Write down a concrete example with a somewhat complex argument, and then write down the relevant recursive calls and what they should return.
-
-
-
-
-
-
 4. Think about how to combine the recursive calls to compute the correct output.
 
 greater_than_all([1, 2, [1, 2],[],11 ,4], 10)
-obj=[1, 2, [1, 2],[],11, 4]
+
+- obj = [1, 2, [1, 2],[],11, 4]
     - sublist = 1
         - greater_than_all(sublist,n) = greater_than_all(1,10) = True
     - sublist = 2
@@ -97,10 +92,12 @@ obj=[1, 2, [1, 2],[],11, 4]
                     - greater_than_all(sublist,n) = greater_than_all(1,10) = True
                 - sublist' = 2
                     - greater_than_all(sublist,n) = greater_than_all(2,10) = True
-        -> greater_than_all([1,2],10) = True (hit by line 35)
+                    
+            -> greater_than_all([1,2],10) = True (hit by line 35)
     - sublist = []
         - greater_than_all(sublist,n) = greater_than_all([],10)
             - obj' = [], hit line 35, return True
+            
         -> greater_than_all([],10) = True
     - sublist = 11
         - greater_than_all(sublist,n) = greater_than_all(11,10) = False
@@ -108,7 +105,7 @@ obj=[1, 2, [1, 2],[],11, 4]
 
 
 add_n([1, 2, [1, 2], 4], 10)
-obj = [1, 2, [1, 2], 4]
+- obj = [1, 2, [1, 2], 4]
     - result = []
     - sublist = 1
         - result.append(add_n(1,10))
@@ -119,6 +116,7 @@ obj = [1, 2, [1, 2], 4]
         - result.append(add_n(2,10))
             - add_n(2,10) = 12
         - result.append(12)
+        
     -> result = [11,12]
     - sublist = [1,2]
         - result.append(add_n([1,2],10))
@@ -135,10 +133,13 @@ obj = [1, 2, [1, 2], 4]
                             - add_n(2,10) = 12
                         - result'.append(12)
                     -> result' = [11,12]
+                    
             -> add_n([1,2],10) = result' = [11,12]
+            
         -> result = [11,12,[11,12]]
     - sublist = 4
         - result.append(add_n(4,10)) = 14
+        
         -> result = [11,12,[11,12],14]
     - result = [11,12,[11,12],14]
                    
