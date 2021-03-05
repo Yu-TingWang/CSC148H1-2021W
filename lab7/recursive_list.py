@@ -338,7 +338,14 @@ class RecursiveList:
                 select_first.append(first_item)
             return rest_selections + select_first
 
-    #def copy(self):
+    def copy(self) -> RecursiveList:
+        if self.is_empty():
+            return RecursiveList([])
+        else:
+            new_list = RecursiveList([])
+            new_list._first = self._first
+            new_list._rest = self._rest
+            return new_list
 
 
 if __name__ == '__main__':
