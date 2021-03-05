@@ -166,6 +166,7 @@ class LinkedList:
         it to the first node in this linked list.
         """
         # TODO: Implement this method
+        return LinkedListIterator(self._first)
 
 
 
@@ -193,6 +194,8 @@ class LinkedListIterator:
     def __init__(self, first_node: Optional[_Node]) -> None:
         """Initialize a new linked list iterator with the given node."""
         # TODO: Implement this method
+        self._curr = first_node
+
 
 
     def __next__(self) -> Any:
@@ -215,6 +218,12 @@ class LinkedListIterator:
         3
         """
         # TODO: Implement this method
+        if self._curr is None:
+            raise StopIteration
+        else:
+            item = self._curr.item
+            self._curr = self._curr.next
+            return item
 
 
 
