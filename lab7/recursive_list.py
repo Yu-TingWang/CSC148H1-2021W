@@ -245,10 +245,15 @@ class RecursiveList:
 
         This should work even if this list is empty.
         """
-        new_first = RecursiveList([item])
-        old_first = self._first
-        self._first = new_first
-        self._rest = old_first
+        new_rest = RecursiveList([])
+        new_rest._first , new_rest._rest = self._first, self._rest
+        self._rest = new_rest
+        self.first = item
+
+        # new_first = RecursiveList([])
+        # old_first = self._first
+        # self._first = item
+        # self._rest = old_first
 
     ###########################################################################
     # Additional Exercises
