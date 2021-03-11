@@ -225,7 +225,13 @@ class RecursiveList:
         ...
         IndexError
         """
-        pass
+        if self.is_empty() and index>0:
+            raise IndexError
+        if index==0:
+            self._insert_first(item)
+        else:
+            self._rest.insert(index-1,item)
+
 
     def _pop_first(self) -> Any:
         """Remove and return the first item in this list.
@@ -239,7 +245,10 @@ class RecursiveList:
 
         This should work even if this list is empty.
         """
-        pass
+        new_first = RecursiveList([item])
+        old_first = self._first
+        self._first = new_first
+        self._rest = old_first
 
     ###########################################################################
     # Additional Exercises
