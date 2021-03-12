@@ -80,6 +80,24 @@ Before jumping right to the code, practice thinking recursively by doing the fol
 
 After you’ve answered the last part, you’re ready to implement `Tree.items_at_depth`!
 
+```t =
+                    1           depth(1)
+                2   3   4       depth(2)
+            5   6       8   9   depth(3)
+
+            2   depth(1)
+        5   6   depth(2)
+
+ t.items_at_depth(2) 
+ items = []
+ t._subtrees = [Tree(2),Tree(3),Tree(4)]
+    subitems = Tree(2).items_at_depth(1)
+             = [2]
+ items = [2]   
+ 
+ ```
+
+
 
  <h1>Task 2: A mutating method (insert)</h1>
  
