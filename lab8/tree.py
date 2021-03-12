@@ -299,6 +299,8 @@ class Tree:
                           Tree(10, [])])
         >>> t = Tree(1, [lt, rt])
         >>> t.branching_factor()
+        >>> k = Tree(1, [Tree(2, [Tree(4, []), Tree(5, [])]),Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
+                          Tree(10, [])])]
         3.0
         """
         # TODO: implement this method!
