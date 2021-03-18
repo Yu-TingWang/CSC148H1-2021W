@@ -56,11 +56,11 @@ tree =
   1    3 
   
   items._inrange(2,4)   result = [4]
-= [4] + Tree(2).items_inrange(2,4)
-= [4] + [2] + Tree(3).items_inrange(2,4)
-= [4] + [2] + [3] + base case 
-= [4] + [2] + [3] + []
-= [4,2,3]
+= Tree(2).items_inrange(2,4) + [4]
+= [2] + Tree(3).items_inrange(2,4) + [4]
+= [2] + [3] + [4] + base case 
+= [2] + [3] + [4] + []
+= [2,3,4]
 
 
   left_height = self.left.height()
