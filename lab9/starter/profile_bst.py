@@ -12,7 +12,7 @@ import random
 import sys
 from timeit import timeit
 
-from bst import BinarySearchTree
+from lab9.starter.bst import BinarySearchTree
 
 lst = None  # Ignore this. This is to make timeit happy.
 SIZES = [100, 200, 400, 800, 1600]

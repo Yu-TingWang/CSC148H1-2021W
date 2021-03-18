@@ -72,24 +72,31 @@ class BinarySearchTree:
         Precondition: this BST contains only integers.
         """
         if self.is_empty():
+            return None
             ...  # TODO: Fill in the base case. (Task 1)
         elif item == self._root:
+            return item # self._root
             ...  # TODO: Fill in the case where we found the item. (Task 2)
         elif item < self._root:
-            ...  # TODO: Fill in the case where item < self._root (Task 3)
+            x = self._left.closet(item) # recursive call
+            if x is None or abs(x-item) > abs(self._root-item):
+                return self._root
+            else:
+                return x
+
+        else:
+            ...  # TODO: Fill in the case where item >= self._root (Task 4)
+            x = self._right.closet(item) # recursive call
+            if x is None or abs(x - item) >= abs(self._root - item):
+                return self._root
+            # Remember to handle the case when calling closest on a subtree
+            # that returns None.
+            else:
+                return x
 
             # Hint: If item < self._root, are there any values in the right
             #       subtree that could be closer to item than self._root?
-
-            # Remember to handle the case when calling closest on a subtree
-            # that returns None.
-
-            # Notice that we > is used here instead of >=
-            # We can break ties using the assumption that the closest on the
-            # left subtree is smaller than self._root
-        else:
-            ...  # TODO: Fill in the case where item >= self._root (Task 4)
-
+            # if left tree is empty or if self._root is closer to the item
             # Hint: If item > self._root, are there any values in the left
             #       subtree that could be closer to item than self._root?
 
