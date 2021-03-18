@@ -104,10 +104,14 @@ def plot_experiment():
     plt.legend()
     plt.xlabel("Size")
     plt.ylabel("Average Time (μs)")
-
     plt.show()
+    plt.savefig('./run_time.png', dpi=300, bbox_inches='tight')
+    plt.close()
 
 
 if __name__ == '__main__':
+    import os
+    # this will check your current working directory i.e. the folder where we save the image
+    print(os.getcwd())
     plot_experiment()
 
