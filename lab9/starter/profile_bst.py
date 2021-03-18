@@ -11,9 +11,8 @@ binary search trees.
 import random
 import sys
 from timeit import timeit
-
-from bst import BinarySearchTree
-
+from lab9.starter.bst import BinarySearchTree
+from typing import Any, List, Optional, Tuple
 lst = None  # Ignore this. This is to make timeit happy.
 SIZES = [100, 200, 400, 800, 1600]
 
@@ -21,7 +20,7 @@ SIZES = [100, 200, 400, 800, 1600]
 # ------------------------------------------------------------------------
 # Task 3
 # ------------------------------------------------------------------------
-def insert_delete_all(items: list[int]) -> None:
+def insert_delete_all(items) -> None:
     """Insert the items in <items> into an empty BinarySearchTree, and then
     remove them in the same order they were added.
 
@@ -31,9 +30,15 @@ def insert_delete_all(items: list[int]) -> None:
     and then call insert and delete on it.
     """
     # TODO: implement this function!
+    bst = BinarySearchTree(None)
+    for item in items:
+        bst.insert(item)
+    for item in items:
+        bst.delete(item)
 
 
-def get_items(size: int, is_sorted: bool) -> list[int]:
+
+def get_items(size: int, is_sorted: bool) :
     """Return a list of <size> items.
 
     If is_sorted is True, then the list returned will be in sorted order.

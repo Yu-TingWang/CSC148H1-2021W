@@ -188,6 +188,11 @@ class BinarySearchTree:
         2
         """
         # TODO: implement this method!
+        # base case
+        if self.is_empty():
+            return 0
+        return 1 + max(self._left.height(),self._right.height())
+
 
     def items_in_range(self, start: Any, end: Any) -> List:
         """Return the items in this BST between <start> and <end>, inclusive.
@@ -198,7 +203,7 @@ class BinarySearchTree:
 
         As usual, use the BST property to minimize the number of recursive
         calls.
-
+        left.value ≤ root.value ≤ right.value
         >>> bst = BinarySearchTree(7)
         >>> left = BinarySearchTree(3)
         >>> left._left = BinarySearchTree(2)
@@ -214,15 +219,34 @@ class BinarySearchTree:
         [11, 13]
         """
         # TODO: implement this method!
+        if self.is_empty():
+            return []
+        elif start > self._root:
+            return self._right.items_in_range(start,end)
+        elif end < self._root:
+            return self._left.items_in_range(start, end)
+        else: # start ≤ root ≤ end
+            return self._left.items_in_range(start,end)+ [self._root] + self._right.items_in_range(start,end)
+
+
+
 
     # ------------------------------------------------------------------------
     # Task 2
     # ------------------------------------------------------------------------
     def insert(self, item: Any) -> None:
         """Insert <item> into this BST, maintaining the BST property.
-
+        left.value ≤ root.value ≤ right.value
         Do not change positions of any other nodes.
+        insert(7)
 
+                10
+            3       20
+        null 7  null null
+          null null
+        tree(3).insert(7)
+            tree(3).right.insert(7)
+                tree(3).right.root = 7
         >>> bst = BinarySearchTree(10)
         >>> bst.insert(3)
         >>> bst.insert(20)
@@ -234,6 +258,15 @@ class BinarySearchTree:
         20
         """
         # TODO: implement this method!
+        if self.is_empty():
+            # self = BinarySearchTree(item)
+            self._root = item
+            self._left = BinarySearchTree(None)
+            self._right = BinarySearchTree(None)
+        elif item < self._root:
+            self._left.insert(item)
+        else:
+            self._right.insert(item)
 
     # ------------------------------------------------------------------------
     # Task 4
@@ -255,7 +288,26 @@ class BinarySearchTree:
             5
           11
         <BLANKLINE>
+
+
+        temp =
+            7
+        2       3
+    5
+11
+
+
+    3
+        7
         >>> bst.rotate_right()
+         3
+            2
+            5
+          11
+        <BLANKLINE>
+        insert(7) to the new_root (old_left)
+
+
         >>> print(bst)
         3
           2
@@ -273,6 +325,14 @@ class BinarySearchTree:
         <BLANKLINE>
         """
         # TODO: implement this method
+        if not self.is_empty():
+            temp = BinarySearchTree(self._root) # here's the insertion comes in
+            temp._left = self._left._right
+            temp._right = self._right
+        #  Rotate
+            self._root = self._left._root
+            self._left = self._left._left
+            self._right = temp
 
     def rotate_left(self) -> None:
         """Rotate the BST counter-clockwise,

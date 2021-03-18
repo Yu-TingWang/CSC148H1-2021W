@@ -47,6 +47,41 @@ which returns the height of a BST. Remember that our definition of height counts
 not the number of edges (parent-to-child connections), 
 on the longest path from the root to a leaf of the tree. 
 
+
+
+```
+tree =         
+        4
+     2      5
+  1    3 
+  
+  items._inrange(2,4)   result = [4]
+= [4] + Tree(2).items_inrange(2,4)
+= [4] + [2] + Tree(3).items_inrange(2,4)
+= [4] + [2] + [3] + base case 
+= [4] + [2] + [3] + []
+= [4,2,3]
+
+
+  left_height = self.left.height()
+                = Tree(2).height()
+                = 1 + max(Tree(2)'s left_height, Tree(2)'s right_height)
+                = 1 + max(1,1) = 2
+  right_height = self.right.height()
+               = Tree(3).height()
+               = 1 + max(Tree(3)'s left_height, Tree(3)'s right_height)
+               = 1 + max(0,0) = 1
+               
+               
+               
+    Tree(2)'s left_height = Tree(4).height() 
+    = 1 + max(Tree(4)'s left_height, Tree(4)'s right_height)
+    = 1
+    Tree(2)'s right_height = Tree(5).height() 
+    = 1 + max(Tree(5)'s left_height, Tree(5)'s right_height)
+    = 1
+  ```
+
 Note: think carefully about whether or not you can use the BST property here to reduce the number of recursive calls.
 
 Then, read the docstring for items_in_range, which is similar to the items and smaller methods from this week’s prep.
